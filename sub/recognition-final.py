@@ -25,7 +25,7 @@ from PIL import Image
 import random
 # import time
 import os
-
+from tkinter import messagebox
 
 class Application(tk.Frame):
     #初期メソッド
@@ -130,6 +130,10 @@ class Application(tk.Frame):
 
     #学習ボタン
     def learn_btn(self):
+        ret = messagebox.askyesno('学習', '学習させますか？（少し時間がかかります）')
+        if ret == False:
+            return
+
         print("learn_btn")
         self.nn.learn()
 

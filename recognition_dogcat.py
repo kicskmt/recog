@@ -13,6 +13,7 @@ from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.preprocessing import image
 import webbrowser
 import json
+from tkinter import messagebox
 
 #参考HP
 ##https://qiita.com/Soichiro1223/items/f03e1922f1bc5a9d4920
@@ -38,6 +39,10 @@ kerasfilename = "dogcat_model.keras"
 dict = dict()#保存
 
 def training():
+
+    ret = messagebox.askyesno('学習', '学習させますか？（少し時間がかかります）')
+    if ret == False:
+        return
 
     paths = []  #ファイル名一覧
     imgs = []   #イメージ読み込み
