@@ -145,13 +145,15 @@ def testing():
                 dict[pred] = 1
         
         print(dict)
-        str_dict = json.dumps(dict)
+        str_dict = json.dumps(dict, ensure_ascii=False)
         writestr = '<p>%s</p><br>'%(str_dict)
         openfile.write(writestr)
 
     #ファイルのクローズ
     openfile.close()
     print("test.htmlファイルに書き込みました。")
+
+    webbrowser.open('file://'+os.path.realpath('test.html'))
 
 # training()
 # testing()
