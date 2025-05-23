@@ -122,6 +122,9 @@ def testing():
     openfile.write("""
     <h1>結果表示</h1>
     <p>画像認識の結果です！</p>
+
+    
+
     """)
 
     for i in range(len(allpath)):
@@ -129,6 +132,9 @@ def testing():
         paths.append(os.listdir(allpath[i]))
 
         dict.clear()
+
+        writestr = '<table  border="3">'
+        openfile.write(writestr)
 
         for j in range(len(paths[i])):
             img = image.load_img(allpath[i]+paths[i][j], target_size=(resize_image_size, resize_image_size,3))
@@ -139,7 +145,9 @@ def testing():
             re =  [ f'{s:.2f}' for s in result]
             print(allpath[i]+paths[i][j] ,classes[predicted], re)
             ree = " ".join([str(_) for _ in re])
-            writestr = '<p><img src="%s">%s [%s]</p>'%(allpath[i]+paths[i][j], classes[predicted], ree)
+            # writestr = '<p><img src="%s">%s [%s]</p>'%(allpath[i]+paths[i][j], classes[predicted], ree)
+
+            writestr = '<tr><td><img src="%s"></td><td>%s [%s]</td></tr>'%(allpath[i]+paths[i][j], classes[predicted], ree)
             openfile.write(writestr)
 
             pred = classes[predicted]
@@ -148,7 +156,11 @@ def testing():
                 dict[pred] = dict[pred] + 1
             else:
                 dict[pred] = 1
-        
+
+
+        writestr = '</table>'
+        openfile.write(writestr)
+
         print(dict)
         str_dict = json.dumps(dict, ensure_ascii=False)
         writestr = '<p>%s</p><br>'%(str_dict)
