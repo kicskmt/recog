@@ -57,7 +57,7 @@ class Application(tk.Frame):
         super().__init__(master)
         self.pack()
         # master.geometry("400x600")
-        master.geometry("700x1100")
+        master.geometry("700x1000")
         master.title("雛形")
 
         # 普通にVisualStudioCodeなどで実行するときはこちらを有効に
@@ -66,7 +66,7 @@ class Application(tk.Frame):
 
         # ついか
         # self.canvas = tk.Canvas(master, bg = "white", width = 300, height = 300)
-        self.canvas = tk.Canvas(master, bg = "white", width = 600, height = 600)
+        self.canvas = tk.Canvas(master, bg = "white", width = 500, height = 500)
         self.canvas.pack()
         self.canvas.bind("<ButtonPress-1>", self.on_draw)
         self.canvas.bind("<B1-Motion>", self.on_draw)
